@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h2>All Products:</h2>
+        <ul>
+            {% if product_list %}
+                {% for product in product_list %}
+                    {{product.name}} | 
+                    Rs.{{product.price}} | 
+                    {{product.avg_rating}} | <a href="{% url 'detail' product.id %}">View Product</a> 
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <p>No Products Yet !!!</p>
+            {% endif %}
+        </ul>   
+    </div>
+{% endblock content %}
