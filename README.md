@@ -3,6 +3,10 @@
 * Prequities
     * python3
 
+**Make a copy of this repo in your local PC**
+**Go inside the 'Product' Folder and open a cmd/termimal**
+<br>
+**Then follow below Steps:**
 
 Install all the required libraries for the project:
 ```
@@ -28,5 +32,11 @@ Run Server:
 ```
 python manage.py runserver
 ```
-Go to http://127.0.0.1:8000/ on Browser
+And Go to http://127.0.0.1:8000/ on Browser
 
+<br>
+
+**Products can only be added from the admin panel:**
+```
+http://127.0.0.1:8000/admin/
+```
