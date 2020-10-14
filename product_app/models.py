@@ -10,6 +10,9 @@ class Product(models.Model):
     def __str__(self):
         return str(self.name)
 
+    # def get_absolute_url(self):
+    #     return reverse('detail', args=[self.id])
+
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

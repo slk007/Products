@@ -9,7 +9,23 @@
             <li>Rating: {{product.avg_rating}}</li>
         </ul>
 
-        <h2><a href="#">Reviews</a></h2>
+        <h2>Reviews:</h2>
+        <a href="{% url 'add_review' product.id %}">Add a review</a>
+        <ul>
+            {% if product.review_set.all %}
+                {% for review in product.review_set.all %}
+                    <b>{{review.reviewer_name}}:</b>
+                    <li>{{review.review_string}} </li>
+                    <li>Rated: {{review.rating}}</li>
+                    <br>
+                {% endfor %}
+            {% else %}
+                <h3>No reviews yet</h3>
+            {% endif %}
+        </ul>
+
+        <a href="{% url 'list' %}">Back</a>
+
     </div>
 
 {% endblock content %}
