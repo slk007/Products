@@ -3,7 +3,11 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 
 from django.views.generic import ListView, DetailView, CreateView
+
 from .models import Product, Review
+from .serailizers import ProductSerailizer
+
+from rest_framework import viewsets
 
 # Create your views here.
 
@@ -54,3 +58,11 @@ def evaluation(request):
         print(product.rating_score)
 
     return render(request, 'product_app/evaluated.html')
+
+
+# viewset for serializer
+
+class ProductViewSet(viewsets.ModelViewSet):
+
+    queryset = Product.objects.all().order_by('name')
+    serializer_class = ProductSerailizer

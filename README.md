@@ -39,3 +39,8 @@ And Go to http://127.0.0.1:8000/ on Browser
 
 **Products can only be added from the admin panel:**
 http://127.0.0.1:8000/admin/
+
+## API
+
+**To get the API response:**
+http://127.0.0.1:8000/api/product/
