@@ -5,10 +5,16 @@
         <h1>Product:</h1>
         <ul>
             <h1>{{product.name}}</h1>
-            <li>Price: Rs.{{product.price}} </li>
-            <li>Rating: {{product.avg_rating}}</li>
+            <li>Price: Rs.{{ product.price }} </li>
+            <li>Rating: {{ product.avg_rating }}</li>
+            <li>Rating Score: {{ product.rating_score }}</li>
         </ul>
 
+    </div>
+
+    <a href="{% url 'list' %}">Back</a>
+
+    <div>
         <h2>Reviews:</h2>
         <a href="{% url 'add_review' product.id %}">Add a review</a>
         <ul>
@@ -17,14 +23,13 @@
                     <b>{{review.reviewer_name}}:</b>
                     <li>{{review.review_string}} </li>
                     <li>Rated: {{review.rating}}</li>
+                    <li>Evaluated: {{review.evaluated}}</li>
                     <br>
                 {% endfor %}
             {% else %}
                 <h3>No reviews yet</h3>
             {% endif %}
         </ul>
-
-        <a href="{% url 'list' %}">Back</a>
 
     </div>
 

@@ -1,6 +1,6 @@
 ### Products and Reviews
 
-* Prequities
+* Prequisites
     * python3
 
 **Make a copy of this repo in your local PC**

@@ -25,3 +25,32 @@ class CreateReview(CreateView):
     fields = ['product', 'reviewer_name', 'review_string', 'rating']
 
     success_url = reverse_lazy('list')
+
+
+def evaluation(request):
+
+    products = Product.objects.all()
+    for product in products:
+
+        product_rating_list = [0,0,0,0,0,0]
+
+        for review in product.review_set.all():
+            rating = review.rating
+            product_rating_list[rating] += 1
+            review.evaluated = True
+            review.save()
+
+        average = 0
+        for i in range(0,6):
+            average += i*product_rating_list[i]
+        average = average/sum(product_rating_list)
+
+        product.avg_rating = int(average)
+        product.rating_score = product_rating_list
+        product.save()
+
+        print("in db:")
+        print(product.avg_rating)
+        print(product.rating_score)
+
+    return render(request, 'product_app/evaluated.html')

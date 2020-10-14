@@ -6,14 +6,16 @@
         <ul>
             {% if product_list %}
                 {% for product in product_list %}
-                    {{product.name}} | 
+                    <h3>{{product.name}}</h3>
                     Rs.{{product.price}} | 
-                    {{product.avg_rating}} | <a href="{% url 'detail' product.id %}">View Product</a> 
+                    {{ product.avg_rating }} Star(s) |
+                    {{ product.rating_score }} <a href="{% url 'detail' product.id %}">View Product</a> 
                     <hr>
                 {% endfor %}
             {% else %}
                 <p>No Products Yet !!!</p>
             {% endif %}
         </ul>   
+        <a href="{% url 'home' %}">Back</a>
     </div>
 {% endblock content %}
