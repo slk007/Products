@@ -9,7 +9,8 @@
                     <h3>{{product.name}}</h3>
                     Rs.{{product.price}} | 
                     {{ product.avg_rating }} Star(s) |
-                    {{ product.rating_score }} <a href="{% url 'detail' product.id %}">View Product</a> 
+                    Rating Score: {{ product.rating }} |
+                    <br> <a href="{% url 'detail' product.id %}">View Product</a> 
                     <hr>
                 {% endfor %}
             {% else %}

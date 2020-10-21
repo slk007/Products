@@ -7,8 +7,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    avg_rating = models.IntegerField(default=0)
-    rating_score = [0,0,0,0,0,0]
+    avg_rating = models.IntegerField(default=0, editable=False)
 
     def __str__(self):
         return str(self.name)
@@ -23,4 +22,18 @@ class Review(models.Model):
     
     def __str__(self):
         return str(self.review_string)
+    
+
+class Rating(models.Model):
+
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, primary_key=True)
+    zero_star = models.IntegerField(default=0)
+    one_star = models.IntegerField(default=0)
+    two_star = models.IntegerField(default=0)
+    three_star = models.IntegerField(default=0)
+    four_star = models.IntegerField(default=0)
+    five_star = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(f'{self.zero_star} {self.one_star} {self.two_star} {self.three_star} {self.four_star} {self.five_star}')
     
