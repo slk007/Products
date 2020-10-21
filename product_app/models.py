@@ -27,12 +27,12 @@ class Review(models.Model):
 class Rating(models.Model):
 
     product = models.OneToOneField(Product, on_delete=models.CASCADE, primary_key=True)
-    zero_star = models.IntegerField(default=0)
-    one_star = models.IntegerField(default=0)
-    two_star = models.IntegerField(default=0)
-    three_star = models.IntegerField(default=0)
-    four_star = models.IntegerField(default=0)
-    five_star = models.IntegerField(default=0)
+    zero_star = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    one_star = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    two_star = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    three_star = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    four_star = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    five_star = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
     def __str__(self):
         return str(f'{self.zero_star} {self.one_star} {self.two_star} {self.three_star} {self.four_star} {self.five_star}')
